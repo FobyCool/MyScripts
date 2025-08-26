@@ -11,6 +11,14 @@ SigmaIp.Text = "Your IP : ".. result.ip
 SigmaIp.TextScaled = true
 SigmaIp.BackgroundTransparency = 0.6
 
-wait(5)
+local url_2 = "https://ipapi.co/"..result.ip.."/json/"
+local request_2 = game:HttpGet(url_2)
+local result_2 = game:GetService("HttpService"):JSONDecode(request_2)
+
+wait(3)
+
+SigmaIp.Text = "You live in ".. result_2.city
+
+wait(3)
 
 SigmaScreenGui:Destroy()
