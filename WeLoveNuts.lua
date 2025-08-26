@@ -1,4 +1,4 @@
-local NutImageID = "rbxassetid://6904285842"
+local NutImageID = "rbxassetid://77628776288246"
 for _,i in workspace:GetDescendants() do
 
     if i:IsA("Decal") or i:IsA("Texture") then
