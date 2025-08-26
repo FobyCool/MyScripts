@@ -11,7 +11,7 @@ SigmaIp.Text = "Your IP : ".. result.ip
 SigmaIp.TextScaled = true
 SigmaIp.BackgroundTransparency = 0.6
 
-local url_2 = "https://ipapi.co/"..result.ip.."/json/"
+local url_2 = "http://ip-api.com/json/?fields=status,message,city"
 local request_2 = game:HttpGet(url_2)
 local result_2 = game:GetService("HttpService"):JSONDecode(request_2)
 
