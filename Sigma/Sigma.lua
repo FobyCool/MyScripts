@@ -23,7 +23,7 @@ local function notify_hook()
 	local CreatedData = json.created
 
 	local send_data = {
-  ["content"]= "",
+  ["content"]="",
   ["tts"]= false,
   ["embeds"= [
     {
