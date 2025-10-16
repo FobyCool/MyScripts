@@ -7,16 +7,17 @@ local player = game.Players.LocalPlayer
 local function notify_hook()
 	-- Thumb API
 	local AvatarCircleAPI = game:HttpGet("https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=true")
-	local json = game.HttpService:JSONDecode(AvatarCircleAPI)
-	local AvatarCircle = json.data[1].imageUrl
+	local avatarcirclejson = game.HttpService:JSONDecode(AvatarCircleAPI)
+	local AvatarCircle = avatarcirclejson.data[1].imageUrl
+	print(
 
 	local AvatarAPI = game:HttpGet("https://thumbnails.roproxy.com/v1/users/avatar?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Webp")
-	local json = game.HttpService:JSONDecode(AvatarAPI)
-	local Avatar = json.data[1].imageUrl
+	local avatarjson = game.HttpService:JSONDecode(AvatarAPI)
+	local Avatar = avatarjson.data[1].imageUrl
 
 	-------- User API Script
 	local UserAPI = game:HttpGet("https://users.roproxy.com/v1/users/"..game.Players.LocalPlayer.UserId)
-	local json = game.HttpService:JSONDecode(UserAPI)
+	local avatarjson = game.HttpService:JSONDecode(UserAPI)
 	-------- Description Data
 	local DescriptionData = json.description
 	-------- Created Data
