@@ -1,9 +1,15 @@
-local GamesList = loadstring(game:HttpGet("https://raw.githubusercontent.com/FobyCool/MyScripts/refs/heads/main/SkiddedHub/ListOfGames.lua"))()
+local GamesList = 
+
+{
+    [73754455] = "https://raw.githubusercontent.com/FobyCool/MyScripts/refs/heads/main/SkiddedHub/155382109.lua", -- AREA 51,
+    ["Universal"] = "https://raw.githubusercontent.com/FobyCool/MyScripts/refs/heads/main/SkiddedHub/Universal.Lua" -- Universal
+}
+
 
 local ScriptToLoad = table.find(GamesList.Scripts, game.Id)
 
-if ScriptToLoad = nil then
-    loadstring(game:HttpGet(GamesList.Universal)()
+if ScriptToLoad == nil then
+    loadstring(game:HttpGet(GamesList.Universal))()
 else
-    loadstring(game:HttpGet(ScriptToLoad)()
+    loadstring(game:HttpGet(ScriptToLoad))()
 end
