@@ -6,7 +6,7 @@ local GamesList =
 }
 
 
-local ScriptToLoad = table.find(GamesList.Scripts, game.Id)
+local ScriptToLoad = table.find(GamesList.Scripts, game.GameId)
 
 if ScriptToLoad == nil then
     loadstring(game:HttpGet(GamesList.Universal))()
