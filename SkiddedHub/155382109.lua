@@ -54,6 +54,11 @@ local ExploitTab = Window:Tab({
     Locked = false,
 })
 
+for _,i in game.CoreGui.WindUI.Window:GetChildren() do
+    if i.Visible then
+        instance.new("UIDragDetector",i)
+    end
+end
 
 WindUI:Notify({
     Title = "Please close window!!",
