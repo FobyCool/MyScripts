@@ -1,4 +1,4 @@
-local GamesList = loadstring(game:HttpGet("sigmaurl"))()
+local GamesList = loadstring(game:HttpGet("https://raw.githubusercontent.com/FobyCool/MyScripts/refs/heads/main/SkiddedHub/ListOfGames.lua"))()
 
 local ScriptToLoad = table.find(GamesList.Scripts, game.Id)
 
