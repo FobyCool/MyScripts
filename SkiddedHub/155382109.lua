@@ -54,6 +54,14 @@ local ExploitTab = Window:Tab({
     Locked = false,
 })
 
+
+WindUI:Notify({
+    Title = "Please close window!!",
+    Content = "There is 2 windows so you should close one!",
+    Duration = 3, -- 3 seconds
+    Icon = "bird",
+})
+
 local DontTeleport = false
 
 ExploitTab:Button({
