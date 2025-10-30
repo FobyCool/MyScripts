@@ -49,8 +49,8 @@ local window = WindUI:CreateWindow({
 })
 
 local ExploitTab = Window:Tab({
-    Title = "Exploits",
-    Icon = "shield-off", -- optional
+    Title = "Character",
+    Icon = "user-cog", -- optional
     Locked = false,
 })
 
@@ -123,6 +123,7 @@ local function NotifyWalkSpeed()
     end
 end
 
+lp.Character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(NotifyWalkSpeed)
 lp.Character.Humanoid:GetPropertyChangedSignal("JumpPower"):Connect(NotifyJumpPower)
 lp.Character.Humanoid:GetPropertyChangedSignal("JumpHeight"):Connect(NotifyJumpPower)
 
