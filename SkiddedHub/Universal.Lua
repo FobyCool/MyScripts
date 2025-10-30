@@ -110,13 +110,17 @@ local function NotifyJumpPower()
 end
 
 
+local LogWalkSpeed = false
+
 local function NotifyWalkSpeed()
-    WindUI:Notify({
+   if LogWalkSpeed then
+         WindUI:Notify({
             Title = "Walk speed has been changed.",
-            Content = "So your jump power is ".. lp.Character.Humanoid.WalkSpeed,
+            Content = "So your walk speed is ".. lp.Character.Humanoid.WalkSpeed,
             Duration = 1.7, -- seconds
             Icon = "message-circle",
             })     
+    end
 end
 
 lp.Character.Humanoid:GetPropertyChangedSignal("JumpPower"):Connect(NotifyJumpPower)
